@@ -188,70 +188,82 @@ tr:hover {
     margin: 0 auto;
 }
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
     header {
-        font-size: 30px;
-        padding: 28px 10px;
+        font-size: 26px;
+        padding: 22px 10px;
         text-align: center;
     }
 
     .layout {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 
     aside {
         width: 100%;
-        height: auto;
+        min-height: auto;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 8px;
         padding: 10px;
+        box-sizing: border-box;
     }
 
     aside button {
         width: 100%;
-        padding: 10px 6px;
-        font-size: 13px;
+        padding: 10px;
+        font-size: 14px;
         border-radius: 10px;
     }
 
     main {
         width: 100%;
-        padding: 14px;
+        padding: 12px;
+        box-sizing: border-box;
     }
 
     .topbar {
         display: flex;
-        gap: 8px;
+        justify-content: space-between;
         align-items: center;
+        gap: 8px;
     }
 
     .topbar h2 {
         font-size: 24px;
+        margin: 0;
     }
 
     .topbar button {
-        padding: 10px 14px;
-        font-size: 14px;
+        font-size: 13px;
+        padding: 9px 12px;
     }
 
     .buscador {
         width: 100%;
+        box-sizing: border-box;
         font-size: 14px;
         padding: 10px;
+        margin: 12px 0;
     }
 
     .table-container {
-        overflow-x: auto;
         width: 100%;
+        overflow-x: auto;
     }
 
     table {
-        min-width: 900px;
+        min-width: 850px;
         font-size: 13px;
     }
 
     th,
     td {
-        padding: 10px;
+        padding: 9px;
     }
 }
