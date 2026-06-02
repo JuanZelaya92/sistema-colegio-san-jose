@@ -187,3 +187,44 @@ tr:hover {
     display: inline-block;
     margin: 0 auto;
 }
+@media (max-width: 768px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        overflow-x: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .sidebar button {
+        min-width: 140px;
+        font-size: 14px;
+    }
+
+    .contenido {
+        width: 100%;
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px;
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    h1, h2 {
+        font-size: 22px;
+    }
+
+    input, select, button {
+        font-size: 14px;
+    }
+
+}
