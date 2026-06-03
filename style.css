@@ -1,27 +1,26 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    background: #f4f7fb;
-    color: #1e293b;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eef2f7;
+    color: #1f2937;
 }
 
 header {
-    background: linear-gradient(90deg, #0d47a1, #1976d2);
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
     color: white;
-    padding: 22px;
+    padding: 30px 20px;
     text-align: center;
-    font-size: 32px;
+    font-size: 42px;
     font-weight: bold;
 }
 
 .layout {
     display: flex;
-    min-height: calc(100vh - 82px);
+    min-height: calc(100vh - 110px);
 }
 
 aside {
@@ -30,76 +29,61 @@ aside {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
 }
 
 aside button {
-    background: #1d4ed8;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
+    border-radius: 10px;
+    font-size: 17px;
     text-align: left;
-    font-size: 15px;
+    cursor: pointer;
 }
 
 aside button:hover {
-    background: #2563eb;
+    background: #1e40af;
 }
 
 main {
     flex: 1;
-    padding: 25px;
+    padding: 28px;
     overflow-x: auto;
 }
 
 h2 {
-    color: #0d47a1;
-    margin-bottom: 20px;
+    color: #1e3a8a;
+    font-size: 34px;
+    margin-top: 0;
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 18px;
-}
-
-.card {
-    background: white;
-    border-radius: 14px;
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
-    border-left: 6px solid #1976d2;
-}
-
-.card h3 {
-    font-size: 18px;
+h3 {
     color: #334155;
-    margin-bottom: 10px;
-}
-
-.card p {
-    font-size: 32px;
-    font-weight: bold;
-    color: #0d47a1;
+    margin-bottom: 12px;
 }
 
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
+    gap: 12px;
 }
 
 .topbar button,
 .small {
-    background: #1976d2;
+    background: #2563eb;
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 7px;
+    border-radius: 8px;
+    padding: 10px 14px;
     cursor: pointer;
+    font-size: 15px;
+}
+
+.small {
     margin: 2px;
 }
 
@@ -113,157 +97,242 @@ h2 {
 
 .buscador {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
+    padding: 14px;
+    margin: 18px 0;
     border: 1px solid #cbd5e1;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
 .table-container {
     width: 100%;
     overflow-x: auto;
-    overflow-y: auto;
-    max-height: 520px;
     background: white;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 table {
-    width: max-content;
-    min-width: 100%;
+    width: 100%;
     border-collapse: collapse;
-    font-size: 12px;
+    background: white;
 }
 
 th {
-    background: #1976d2;
+    background: #2563eb;
     color: white;
-    padding: 8px;
+    padding: 12px;
     text-align: left;
-    position: sticky;
-    top: 0;
-    z-index: 2;
     white-space: nowrap;
 }
 
 td {
-    padding: 7px;
-    border-bottom: 1px solid #e2e8f0;
+    padding: 12px;
+    border-bottom: 1px solid #e5e7eb;
     white-space: nowrap;
 }
 
-tr:hover {
-    background: #eff6ff;
+tr:nth-child(even) {
+    background: #f8fafc;
 }
 
-tr:hover {
-    background: #eff6ff;
+.acciones-celda {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.acciones-header {
+    background: #2563eb;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+}
+
+.card h3 {
+    margin: 0;
+    color: #334155;
+}
+
+.card p {
+    font-size: 34px;
+    font-weight: bold;
+    color: #2563eb;
 }
 
 .ficha {
     background: white;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.ficha p {
+    margin: 6px 0;
+}
+
+.estado-ok {
+    color: #16a34a;
+    font-weight: bold;
+}
+
+.estado-pendiente {
+    color: #d97706;
+    font-weight: bold;
+}
+
+.estado-error {
+    color: #dc2626;
+    font-weight: bold;
 }
 
 .error {
-    color: red;
+    color: #dc2626;
     font-weight: bold;
 }
-.acciones-header {
-    width: 140px;
-}
 
-.acciones-celda {
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-}
-
-.acciones-celda button {
-    display: inline-block;
-    margin: 0 auto;
-}
+/* CELULAR */
 @media (max-width: 768px) {
     body {
         overflow-x: hidden;
+        background: #eef2f7;
     }
 
     header {
         font-size: 26px;
         padding: 22px 10px;
-        text-align: center;
+        line-height: 1.2;
     }
 
     .layout {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        min-height: auto;
     }
 
     aside {
-        width: 100%;
-        min-height: auto;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-        padding: 10px;
-        box-sizing: border-box;
+        width: 100% !important;
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        padding: 10px !important;
+        background: #0f172a;
     }
 
     aside button {
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
-        border-radius: 10px;
+        width: 100% !important;
+        padding: 10px 8px !important;
+        font-size: 14px !important;
+        border-radius: 9px !important;
+        text-align: center !important;
     }
 
     main {
-        width: 100%;
-        padding: 12px;
-        box-sizing: border-box;
+        width: 100% !important;
+        padding: 12px !important;
+        overflow-x: hidden !important;
+    }
+
+    h2 {
+        font-size: 24px !important;
+    }
+
+    h3 {
+        font-size: 18px !important;
     }
 
     .topbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 8px;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 8px !important;
     }
 
-    .topbar h2 {
-        font-size: 24px;
-        margin: 0;
-    }
-
-    .topbar button {
-        font-size: 13px;
-        padding: 9px 12px;
+    .topbar button,
+    .small {
+        font-size: 13px !important;
+        padding: 8px 10px !important;
+        border-radius: 7px !important;
     }
 
     .buscador {
-        width: 100%;
-        box-sizing: border-box;
-        font-size: 14px;
-        padding: 10px;
-        margin: 12px 0;
+        width: 100% !important;
+        font-size: 14px !important;
+        padding: 10px !important;
+        margin: 12px 0 !important;
     }
 
     .table-container {
-        width: 100%;
-        overflow-x: auto;
+        width: 100% !important;
+        overflow-x: auto !important;
+        border-radius: 10px !important;
     }
 
     table {
-        min-width: 850px;
-        font-size: 13px;
+        min-width: 850px !important;
+        width: max-content !important;
+        font-size: 13px !important;
     }
 
     th,
     td {
-        padding: 9px;
+        padding: 9px !important;
+        white-space: nowrap !important;
+    }
+
+    .acciones-celda {
+        display: flex !important;
+        gap: 5px !important;
+    }
+
+    .ficha {
+        padding: 14px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .card {
+        padding: 14px !important;
+    }
+
+    .card p {
+        font-size: 24px !important;
+    }
+}
+
+/* CELULAR MUY CHICO */
+@media (max-width: 430px) {
+    header {
+        font-size: 24px !important;
+    }
+
+    aside {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    aside button {
+        font-size: 13px !important;
+        padding: 9px 6px !important;
+    }
+
+    table {
+        min-width: 780px !important;
     }
 }
