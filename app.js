@@ -21,47 +21,116 @@ const config = {
     alumnos: {
         pk: "id_alumno",
         titulo: "Alumnos",
-        columnas: ["id_alumno", "nombre", "apellido", "dni", "fecha_nacimiento", "direccion", "telefono", "email", "tutor_a_cargo", "parentesco_tutor"]
+        columnas: [
+            "id_alumno",
+            "nombre",
+            "apellido",
+            "dni",
+            "fecha_nacimiento",
+            "direccion",
+            "telefono",
+            "email",
+            "tutor_a_cargo",
+            "parentesco_tutor"
+        ]
     },
+
     cursos: {
         pk: "id_curso",
         titulo: "Cursos",
-        columnas: ["id_curso", "nombre_curso", "turno", "aula"]
+        columnas: [
+            "id_curso",
+            "nombre_curso",
+            "turno",
+            "aula"
+        ]
     },
+
     docentes: {
         pk: "id_docente",
         titulo: "Docentes",
-        columnas: ["id_docente", "nombre", "apellido", "dni", "telefono", "email"]
+        columnas: [
+            "id_docente",
+            "nombre",
+            "apellido",
+            "dni",
+            "telefono",
+            "email"
+        ]
     },
+
     materias: {
         pk: "id_materia",
         titulo: "Materias",
-        columnas: ["id_materia", "nombre_materia"]
+        columnas: [
+            "id_materia",
+            "nombre_materia"
+        ]
     },
+
     cuotas: {
         pk: "id_cuota",
         titulo: "Cuotas",
-        columnas: ["id_cuota", "id_alumno", "monto", "fecha_vencimiento", "estado"]
+        columnas: [
+            "id_cuota",
+            "id_alumno",
+            "monto",
+            "fecha_vencimiento",
+            "estado"
+        ]
     },
+
     notas: {
         pk: "id_nota",
         titulo: "Notas",
-        columnas: ["id_nota", "id_alumno", "id_materia", "nota", "fecha", "trimestre", "nota_final", "estado_final"]
+        columnas: [
+            "id_nota",
+            "id_alumno",
+            "id_materia",
+            "nota",
+            "fecha",
+            "trimestre",
+            "nota_final",
+            "estado_final"
+        ]
     },
+
     inscripciones: {
         pk: "id_inscripcion",
         titulo: "Inscripciones",
-        columnas: ["id_inscripcion", "id_alumno", "id_curso", "fecha_inscripcion", "ciclo_lectivo", "estado"]
+        columnas: [
+            "id_inscripcion",
+            "id_alumno",
+            "id_curso",
+            "fecha_inscripcion",
+            "ciclo_lectivo",
+            "estado"
+        ]
     },
+
     actas: {
         pk: "id_acta",
         titulo: "Actas",
-        columnas: ["id_acta", "id_alumno", "fecha", "tipo", "motivo", "descripcion", "estado"]
+        columnas: [
+            "id_acta",
+            "id_alumno",
+            "fecha",
+            "tipo",
+            "motivo",
+            "descripcion",
+            "estado"
+        ]
     },
+
     asistencias: {
         pk: "id_asistencia",
         titulo: "Inasistencias",
-        columnas: ["id_asistencia", "id_alumno", "fecha", "estado"]
+        columnas: [
+            "id_asistencia",
+            "id_alumno",
+            "fecha",
+            "estado"
+        ]
     }
 };
 
@@ -109,9 +178,11 @@ function nombreColumna(columna) {
         fecha: "Fecha",
         nota: "Nota",
         trimestre: "Trimestre",
+
         primer_trimestre: "1° trimestre",
         segundo_trimestre: "2° trimestre",
         tercer_trimestre: "3° trimestre",
+
         nota_final: "Nota final",
         estado_final: "Estado final",
 
@@ -196,10 +267,30 @@ function formatearNumero(valor) {
     return valor.toFixed(1);
 }
 
+function iconoVer() {
+    return `<i class="fas fa-eye"></i>`;
+}
+
+function iconoEditar() {
+    return `<i class="fas fa-pen"></i>`;
+}
+
+function iconoEliminar() {
+    return `<i class="fas fa-trash"></i>`;
+}
+
 async function cargarDashboard() {
     const resultado = document.getElementById("resultado");
 
-    const tablas = ["alumnos", "cursos", "docentes", "materias", "cuotas", "actas"];
+    const tablas = [
+        "alumnos",
+        "cursos",
+        "docentes",
+        "materias",
+        "cuotas",
+        "actas"
+    ];
+
     let cards = "";
 
     for (const tabla of tablas) {
@@ -297,16 +388,27 @@ function renderModuloGeneral(tabla, data) {
 
         html += `
             <td class="acciones-celda">
-                ${tabla === "alumnos" ? `<button class="small" onclick="verAlumno(${fila[c.pk]})">Ficha</button>` : ""}
-                ${tabla === "cursos" ? `<button class="small" onclick="verCurso(${fila[c.pk]})">Ver curso</button>` : ""}
 
-                <button class="small edit" onclick="editarRegistro('${tabla}', ${fila[c.pk]})">
-                    Editar
+                ${tabla === "alumnos" ? `
+                    <button class="small" title="Ver ficha" onclick="verAlumno(${fila[c.pk]})">
+                        ${iconoVer()}
+                    </button>
+                ` : ""}
+
+                ${tabla === "cursos" ? `
+                    <button class="small" title="Ver curso" onclick="verCurso(${fila[c.pk]})">
+                        ${iconoVer()}
+                    </button>
+                ` : ""}
+
+                <button class="small edit" title="Editar" onclick="editarRegistro('${tabla}', ${fila[c.pk]})">
+                    ${iconoEditar()}
                 </button>
 
-                <button class="small delete" onclick="eliminarRegistro('${tabla}', ${fila[c.pk]})">
-                    Eliminar
+                <button class="small delete" title="Eliminar" onclick="eliminarRegistro('${tabla}', ${fila[c.pk]})">
+                    ${iconoEliminar()}
                 </button>
+
             </td>
         `;
 
@@ -356,7 +458,15 @@ async function cargarInscripciones() {
         titulo: "Inscripciones",
         placeholder: "Buscar alumno curso DNI...",
         datos,
-        columnas: ["id_inscripcion", "alumno", "dni", "curso", "fecha_inscripcion", "ciclo_lectivo", "estado"],
+        columnas: [
+            "id_inscripcion",
+            "alumno",
+            "dni",
+            "curso",
+            "fecha_inscripcion",
+            "ciclo_lectivo",
+            "estado"
+        ],
         tablaOriginal: "inscripciones",
         pk: "id_inscripcion"
     });
@@ -394,7 +504,13 @@ async function cargarCuotas() {
         titulo: "Cuotas",
         placeholder: "Buscar alumno estado vencimiento...",
         datos,
-        columnas: ["id_cuota", "alumno", "monto", "fecha_vencimiento", "estado"],
+        columnas: [
+            "id_cuota",
+            "alumno",
+            "monto",
+            "fecha_vencimiento",
+            "estado"
+        ],
         tablaOriginal: "cuotas",
         pk: "id_cuota"
     });
@@ -440,7 +556,16 @@ async function cargarNotas() {
         titulo: "Notas",
         placeholder: "Buscar alumno materia estado...",
         datos,
-        columnas: ["id_nota", "alumno", "materia", "nota", "fecha", "trimestre", "nota_final", "estado_final"],
+        columnas: [
+            "id_nota",
+            "alumno",
+            "materia",
+            "nota",
+            "fecha",
+            "trimestre",
+            "nota_final",
+            "estado_final"
+        ],
         tablaOriginal: "notas",
         pk: "id_nota"
     });
@@ -484,8 +609,13 @@ async function cargarActas() {
             estado: acta.estado,
             fecha: acta.fecha,
             acciones: `
-                <button class="small" onclick="verActa(${acta.id_acta})">Ver</button>
-                <button class="small delete" onclick="eliminarRegistro('actas', ${acta.id_acta})">Eliminar</button>
+                <button class="small" title="Ver acta" onclick="verActa(${acta.id_acta})">
+                    ${iconoVer()}
+                </button>
+
+                <button class="small delete" title="Eliminar" onclick="eliminarRegistro('actas', ${acta.id_acta})">
+                    ${iconoEliminar()}
+                </button>
             `
         };
     });
@@ -494,7 +624,16 @@ async function cargarActas() {
         titulo: "Actas",
         placeholder: "Buscar alumno DNI curso tipo motivo estado...",
         datos,
-        columnas: ["alumno", "dni", "curso", "tipo", "motivo", "estado", "fecha", "acciones"],
+        columnas: [
+            "alumno",
+            "dni",
+            "curso",
+            "tipo",
+            "motivo",
+            "estado",
+            "fecha",
+            "acciones"
+        ],
         mostrarAgregar: true,
         tablaAgregar: "actas"
     });
@@ -561,7 +700,14 @@ async function cargarAsistencias() {
         titulo: "Resumen de inasistencias",
         placeholder: "Buscar alumno DNI...",
         datos,
-        columnas: ["numero", "alumno", "dni", "ausencias", "tardes", "total_faltas"]
+        columnas: [
+            "numero",
+            "alumno",
+            "dni",
+            "ausencias",
+            "tardes",
+            "total_faltas"
+        ]
     });
 }
 
@@ -693,8 +839,15 @@ function renderTablaEspecial({ titulo, placeholder, datos, columnas, tablaOrigin
 
         html += `
             <td class="acciones-celda">
-                <button class="small edit" onclick="editarRegistro('${tablaOriginal}', ${fila[pk]})">Editar</button>
-                <button class="small delete" onclick="eliminarRegistro('${tablaOriginal}', ${fila[pk]})">Eliminar</button>
+
+                <button class="small edit" title="Editar" onclick="editarRegistro('${tablaOriginal}', ${fila[pk]})">
+                    ${iconoEditar()}
+                </button>
+
+                <button class="small delete" title="Eliminar" onclick="eliminarRegistro('${tablaOriginal}', ${fila[pk]})">
+                    ${iconoEliminar()}
+                </button>
+
             </td>
         `;
 
@@ -737,7 +890,9 @@ async function agregarRegistro(tabla) {
         }
     }
 
-    const { error } = await supabaseClient.from(tabla).insert([nuevo]);
+    const { error } = await supabaseClient
+        .from(tabla)
+        .insert([nuevo]);
 
     if (error) {
         alert("Error al agregar: " + error.message);
@@ -904,6 +1059,7 @@ async function editarRegistro(tabla, id) {
         if (col === c.pk) continue;
 
         const valor = prompt(`Editar ${nombreColumna(col)}:`, data[col] ?? "");
+
         if (valor !== null) {
             actualizado[col] = valor;
         }
@@ -1187,7 +1343,11 @@ async function verCurso(idCurso) {
 
         return {
             materia: materia ? materia.nombre_materia : cm.id_materia,
-            acciones: `<button class="small delete" onclick="quitarMateriaCurso(${cm.id_curso_materia}, ${idCurso})">Eliminar</button>`
+            acciones: `
+                <button class="small delete" title="Eliminar" onclick="quitarMateriaCurso(${cm.id_curso_materia}, ${idCurso})">
+                    ${iconoEliminar()}
+                </button>
+            `
         };
     });
 
@@ -1207,7 +1367,11 @@ async function verCurso(idCurso) {
         return {
             docente: docente ? `${docente.nombre} ${docente.apellido}` : dm.id_docente,
             materia: materia ? materia.nombre_materia : dm.id_materia,
-            acciones: `<button class="small delete" onclick="quitarDocenteCurso(${dm.id_docente_materia}, ${idCurso})">Eliminar</button>`
+            acciones: `
+                <button class="small delete" title="Eliminar" onclick="quitarDocenteCurso(${dm.id_docente_materia}, ${idCurso})">
+                    ${iconoEliminar()}
+                </button>
+            `
         };
     });
 
@@ -1288,9 +1452,9 @@ async function obtenerNotasCurso(idCurso, alumnos) {
 
         if (!resumen[clave]) {
             resumen[clave] = {
-    id_alumno: nota.id_alumno,
-    alumno: alumno ? `${alumno.nombre} ${alumno.apellido}` : nota.id_alumno,
-    materia: materia ? materia.nombre_materia : nota.id_materia,
+                id_alumno: nota.id_alumno,
+                alumno: alumno ? `${alumno.nombre} ${alumno.apellido}` : nota.id_alumno,
+                materia: materia ? materia.nombre_materia : nota.id_materia,
                 primer_trimestre: "",
                 segundo_trimestre: "",
                 tercer_trimestre: "",
@@ -1312,9 +1476,9 @@ async function obtenerNotasCurso(idCurso, alumnos) {
         }
     });
 
- return Object.values(resumen).sort((a, b) => {
-    return a.id_alumno - b.id_alumno;
-});
+    return Object.values(resumen).sort((a, b) => {
+        return a.id_alumno - b.id_alumno;
+    });
 }
 
 async function agregarNotaCurso(idCurso) {
@@ -1354,6 +1518,7 @@ async function agregarNotaCurso(idCurso) {
     const { data: materias } = await materiasQuery;
 
     let listaAlumnos = "Alumnos del curso:\n\n";
+
     alumnos.forEach(a => {
         listaAlumnos += `${a.id_alumno} - ${a.nombre} ${a.apellido} - DNI ${a.dni}\n`;
     });
@@ -1369,6 +1534,7 @@ async function agregarNotaCurso(idCurso) {
     }
 
     let listaMaterias = "Materias del curso:\n\n";
+
     materias.forEach(m => {
         listaMaterias += `${m.id_materia} - ${m.nombre_materia}\n`;
     });
@@ -1463,7 +1629,10 @@ async function recalcularNotaFinal(idAlumno, idMateria) {
 
     if (notasValidas.length === 0) return;
 
-    const promedio = Number((notasValidas.reduce((a, b) => a + b, 0) / notasValidas.length).toFixed(2));
+    const promedio = Number(
+        (notasValidas.reduce((a, b) => a + b, 0) / notasValidas.length).toFixed(2)
+    );
+
     const estadoFinal = promedio >= 7 ? "Aprobado" : "Desaprobado";
 
     await supabaseClient
@@ -1521,7 +1690,12 @@ async function agregarMateriaCurso(idCurso) {
 
     const { error } = await supabaseClient
         .from("curso_materia")
-        .insert([{ id_curso: idCurso, id_materia: Number(idMateria) }]);
+        .insert([
+            {
+                id_curso: idCurso,
+                id_materia: Number(idMateria)
+            }
+        ]);
 
     if (error) {
         alert("Error al agregar materia: " + error.message);
@@ -1695,5 +1869,10 @@ function crearTablaHTML(data) {
 
     return html;
 }
+
+window.toggleMenu = function () {
+    const layout = document.querySelector(".layout");
+    layout.classList.toggle("menu-oculto");
+};
 
 cargarDashboard();

@@ -3,25 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Colegio San Jose</title>
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
+
 <body>
 
-<header>Sistema Colegio San Jose</header>
+<header>
+    <button id="btnMenu" onclick="toggleMenu()">☰</button>
+    <span>Sistema Colegio San Jose</span>
+</header>
 
 <div class="layout">
     <aside>
-        
-        <button onclick="cargarModulo('alumnos')">Alumnos</button>
-        <button onclick="cargarModulo('cursos')">Cursos</button>
-        <button onclick="cargarModulo('docentes')">Docentes</button>
-        <button onclick="cargarModulo('materias')">Materias</button>
-        <button onclick="cargarModulo('cuotas')">Cuotas</button>
-        <button onclick="cargarModulo('asistencias')">Inasistencias</button>
-        <button onclick="cargarModulo('inscripciones')">Inscripciones</button>
-        <button onclick="cargarModulo('actas')">Actas</button>
+        <button onclick="cargarModulo('alumnos')">
+            <i class="fas fa-users"></i>
+            <span>Alumnos</span>
+        </button>
+
+        <button onclick="cargarModulo('cursos')">
+            <i class="fas fa-book"></i>
+            <span>Cursos</span>
+        </button>
+
+        <button onclick="cargarModulo('docentes')">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <span>Docentes</span>
+        </button>
+
+        <button onclick="cargarModulo('materias')">
+            <i class="fas fa-list"></i>
+            <span>Materias</span>
+        </button>
+
+        <button onclick="cargarModulo('cuotas')">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>Cuotas</span>
+        </button>
+
+        <button onclick="cargarModulo('asistencias')">
+            <i class="fas fa-calendar-xmark"></i>
+            <span>Inasistencias</span>
+        </button>
+
+        <button onclick="cargarModulo('inscripciones')">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Inscripciones</span>
+        </button>
+
+        <button onclick="cargarModulo('actas')">
+            <i class="fas fa-file-signature"></i>
+            <span>Actas</span>
+        </button>
     </aside>
 
     <main id="resultado">
